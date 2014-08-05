@@ -16,12 +16,18 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
 RUN apt-get update
 
-RUN apt-get install -y google-chrome-stable xvfb
+RUN apt-get install -y firefox google-chrome-stable xvfb
+RUN apt-get install -y unzip
 
 RUN wget https://chromedriver.googlecode.com/files/chromedriver_linux64_2.3.zip
 RUN unzip chromedriver_linux64_2.3.zip && rm chromedriver_linux64_2.3.zip && mv chromedriver /usr/bin && chmod 755 /usr/bin/chromedriver
 
+RUN mv /usr/bin/google-chrome /usr/bin/google-chrome-sandbox
+RUN echo "#!/bin/bash\\n/usr/bin/google-chrome-sandbox --no-sandbox --disable-setuid-sandbox $@" > /usr/bin/google-chrome
+RUN chmod a+x /usr/bin/google-chrome
+
 ADD start.sh /opt/start.sh
+ADD chromedriver.sh /opt/chromedriver.sh
 
 EXPOSE 5555
 
