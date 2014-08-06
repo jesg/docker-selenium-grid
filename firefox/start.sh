@@ -8,4 +8,4 @@ java -Djava.security.egd=file:/dev/random \
 -role node \
 -hub http://${SELENIUM_HUB_ADDR}/grid/register \
 -remoteHost http://${SELENIUM_NODE_ADDR} \
--browser browserName=firefox,maxInstances=1,platform=LINUX -debug
+-browser browserName=firefox,maxInstances=1,platform=LINUX
