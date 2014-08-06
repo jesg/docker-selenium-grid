@@ -4,7 +4,7 @@ FROM ubuntu:latest
 
 RUN apt-get update
 
-RUN apt-get install -y wget fontconfig
+RUN apt-get install -y wget fontconfig curl
 
 ENV PHANTOMJS_VERSION 1.9.7
 RUN wget --no-check-certificate https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2
