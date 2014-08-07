@@ -11,7 +11,7 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-sel
 RUN apt-get install oracle-java7-installer -y
 
 RUN wget -P /opt http://selenium-release.storage.googleapis.com/2.41/selenium-server-standalone-2.41.0.jar
-RUN mv selenium-server-standalone-2.41.0.jar selenium-server-standalone.jar 
+RUN mv /opt/selenium-server-standalone-2.41.0.jar /opt/selenium-server-standalone.jar 
 
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
