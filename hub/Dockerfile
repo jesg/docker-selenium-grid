@@ -14,8 +14,9 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-s
 RUN echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
 RUN apt-get install oracle-java7-installer -y
 
-RUN wget -P /opt http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
+RUN wget -P /opt http://selenium-release.storage.googleapis.com/2.41/selenium-server-standalone-2.41.0.jar
+RUN mv /opt/selenium-server-standalone-2.41.0.jar /opt/selenium-server-standalone.jar 
 
 EXPOSE 4444
 
-CMD ["java", "-jar", "/opt/selenium-server-standalone-2.42.2.jar", "-role", "hub"]
+CMD ["java", "-jar", "/opt/selenium-server-standalone.jar", "-role", "hub"]
